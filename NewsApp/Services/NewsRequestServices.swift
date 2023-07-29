@@ -9,11 +9,11 @@ import Foundation
 
 class NewsRequestServices {
     
-    let ApiKey = "eb68bf7b53034f73b43599e1d339bd46"
+    private let ApiKey = "eb68bf7b53034f73b43599e1d339bd46"
+    private var strURL = "url"
     
     func getNews(category: TagCategory, completion: @escaping ([Article]) -> Void) {
-        var strURL = "url"
-       
+
         switch category {
         case .all:
             strURL = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=\(ApiKey)"
@@ -27,7 +27,7 @@ class NewsRequestServices {
             //response - статус или ошибка
             //error - ошибка детальнее
             if error != nil {
-
+                print("Error requesr: \(error)")
             } else if let data = data, let response = response as? HTTPURLResponse {
                 print("statuscode: \(response.statusCode) data: \(data)")
                 do {
@@ -41,5 +41,27 @@ class NewsRequestServices {
             }
         }
         task.resume()
+    }
+    
+    
+    func getSearchNews(with text: String, completion: @escaping ([Article]) -> Void) {
+        let text = text.replacingOccurrences(of: " ", with: "+")
+        strURL = "https://newsapi.org/v2/everything?q=\(text)&sortBy=popularity&apiKey=\(ApiKey)"
+
+        guard let url = URL(string: strURL) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil {
+                print("Error request: \(error)")
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                print("statuscode: \(response.statusCode) data: \(data)")
+                do {
+                    let result = try JSONDecoder().decode(NewsModel.self, from: data)
+                    completion(result.articles)
+                } catch {
+                    print("Failed connect to \(error.localizedDescription)")
+                }
+            }
+        }.resume()
     }
 }

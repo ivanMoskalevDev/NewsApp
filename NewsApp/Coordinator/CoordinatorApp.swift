@@ -13,9 +13,7 @@ protocol CoordinatorAppProtocol {
 }
 
 class CoordinatorApp: CoordinatorAppProtocol {
-    
-    var appInfoModel: AppInfoModel = .init(theme: .light)
-    
+        
     var navigationController: UINavigationController
     
     var homeViewModel: HomeViewModel = HomeViewModel()

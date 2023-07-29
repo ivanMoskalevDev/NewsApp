@@ -25,5 +25,5 @@ enum AppTheme: Int {
 }
 
 struct AppInfoModel {
-    var theme: AppTheme = .light
+    var theme: AppTheme
 }

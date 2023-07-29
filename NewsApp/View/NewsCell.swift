@@ -9,11 +9,12 @@ import UIKit
 import SnapKit
 
 protocol NewsCellDelegateProtocol: AnyObject {
-    func didTapCell()
+    func didTapCell(model: Article?)
     func didTapFavorite()
 }
 
 extension NewsCellDelegateProtocol {
+    func didTapCell(model: Article?){}
     func didTapFavorite() {}
 }
 
@@ -122,24 +123,15 @@ class NewsCell: UITableViewCell {
     }
     
     func updateCell(with model: Article) {
-        //self.model = model
+        self.model = model
         authorLabel.text = model.author
         titleLabel.text = model.title
-        dateLabel.text = model.publishedAt
-//        guard let urlStr = self.model?.imageURL else {return}
-//        if let url = URL(string: urlStr) {
-//            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//                guard let data = data, error == nil else { return }
-//                DispatchQueue.main.async { // execute on main thread
-//                    self.cellImageView.image = UIImage(data: data)
-//                }
-//            }
-//            task.resume()
-//        }
+        dateLabel.text = model.publishedAt?.replacingOccurrences(of: "T", with: " ")
+                                            .replacingOccurrences(of: "Z", with: " ")
     }
     
     @objc private func tabHandler() {
-        delegate?.didTapCell()
+        delegate?.didTapCell(model: self.model)
     }
     
     @objc private func tabFavorite() {
