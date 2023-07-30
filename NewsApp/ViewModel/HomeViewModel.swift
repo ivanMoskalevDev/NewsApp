@@ -26,15 +26,15 @@ class HomeViewModel {
     var bindNewsModel:   ( ([NewsCellModel]) -> () )?
     var bindLoadingNews: ( (Bool) -> () )?
 
-    init() {
-        let testArticles: Article = .init(source: .init(id: "", name: ""),
-                                          author: "RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti",
-                                          title: "text text texttetexttexttext",
-                                          description: "",
-                                          url: nil, urlToImage: nil, publishedAt: "28.07.2023T23:00",
-                                          content: nil)
-        self.newsCellModel.append(.init(newsModel: testArticles, isFavorite: false))
-    }
+//    init() {
+//        let testArticles: Article = .init(source: .init(id: "", name: ""),
+//                                          author: "RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti",
+//                                          title: "text text texttetexttexttext",
+//                                          description: "",
+//                                          url: nil, urlToImage: nil, publishedAt: "28.07.2023T23:00",
+//                                          content: nil)
+//        self.newsCellModel.append(.init(newsModel: testArticles, isFavorite: false))
+//    }
     
     func getNews(category: TagCategory) {
         self.newsCellModel.removeAll()
