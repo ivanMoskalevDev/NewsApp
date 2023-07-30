@@ -33,7 +33,7 @@ final class RadioButton: UIButton {
             for: .normal
         )
         
-        imageView?.contentMode = .scaleAspectFit
+        imageView?.contentMode = .scaleAspectFill
         contentVerticalAlignment = .fill
         contentHorizontalAlignment = .fill
         

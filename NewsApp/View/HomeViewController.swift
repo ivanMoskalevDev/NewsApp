@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorStyle = .none
         tableView.register(NewsCell.self, forCellReuseIdentifier: "NewsCell")
         return tableView
     }()
@@ -46,7 +47,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "AccentColor")
+        view.backgroundColor = UIColor(named: "PrimaryColor")
         
         carouselView.corouselDelegate = self
         searchBar.delegate = self
@@ -83,7 +84,7 @@ class HomeViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.title = "News"
-        navigationController?.navigationBar.backgroundColor = UIColor(named: "AccentColor")
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "PrimaryColor")
 
         let buttonMoon = RadioButton(frame: .init(origin: .zero, size: CGSize(width: 35, height: 35)),
                                      uncheckedImage: UIImage(systemName: "moon") ?? UIImage(),

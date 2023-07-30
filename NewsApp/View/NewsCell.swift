@@ -30,17 +30,17 @@ class NewsCell: UITableViewCell {
         stack.axis = .vertical //задаем положение по вертикали
         stack.spacing = 16 //расстояние между элементами
         stack.layer.cornerRadius = 16
-        stack.backgroundColor = .white
+        stack.backgroundColor = UIColor(named: "CardColor")
         stack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         stack.isLayoutMarginsRelativeArrangement = true
-        stack.contentMode = .scaleAspectFill
+        stack.contentMode = .scaleAspectFit
         return stack
     }()
     
     private let stackTop: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 10
+        stack.spacing = 5
         stack.distribution = .equalSpacing
         stack.alignment = .center
         stack.backgroundColor = .none
@@ -52,7 +52,8 @@ class NewsCell: UITableViewCell {
         let title = UILabel()
         title.textAlignment = .left
         title.numberOfLines = 4
-        title.contentMode = .scaleAspectFill
+        title.contentMode = .scaleAspectFit
+        title.textColor = UIColor(named: "CardTextColor")
         return title
     }()
     
@@ -67,8 +68,8 @@ class NewsCell: UITableViewCell {
     private let dateLabel: UILabel = {
         let date = UILabel()
         date.textAlignment = .right
-        date.textColor = .gray
         date.font = UIFont(name: date.font.familyName, size: 12)
+        date.textColor = UIColor(named: "CardTopTextColor")
         return date
     }()
     
@@ -78,7 +79,10 @@ class NewsCell: UITableViewCell {
         author.textColor = .gray
         author.font = UIFont(name: author.font.familyName, size: 18)
         author.numberOfLines = 5
-        author.contentMode = .scaleAspectFill
+        //author.contentMode = .scaleAspectFit
+        //author.clipsToBounds = true
+        //author.layer.masksToBounds = false
+        author.textColor = UIColor(named: "CardTopTextColor")
         return author
     }()
     
@@ -87,6 +91,8 @@ class NewsCell: UITableViewCell {
                               uncheckedImage: UIImage(systemName: "star") ?? UIImage(),
                               checkedImage: UIImage(systemName: "star.fill") ?? UIImage())
         btn.tintColor = .systemYellow
+        //btn.clipsToBounds = true
+        //btn.layer.masksToBounds = false
         return btn
     }()
     

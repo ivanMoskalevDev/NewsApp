@@ -30,7 +30,7 @@ class CarouselView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "BackgroundColor")
         showsHorizontalScrollIndicator = false
 
         categoryButtons.append(CarouselButton(title: "Top", id: TagCategory.all.rawValue))
@@ -78,7 +78,7 @@ class CarouselButton: UIButton {
         configuration.cornerStyle = .fixed
         configuration.baseForegroundColor = UIColor(named: "TextColor")
         configuration.background.cornerRadius = 8
-        configuration.baseBackgroundColor = UIColor(named: "AccentColor")
+        configuration.baseBackgroundColor = UIColor(named: "PrimaryColor")
         configuration.buttonSize = .medium
         configuration.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
         self.configuration = configuration

@@ -21,7 +21,11 @@ class NewsRequestServices {
             strURL = "https://newsapi.org/v2/top-headlines?country=ru&category=\(category)&apiKey=\(ApiKey)"
         }
         
-        guard let url = URL(string: strURL) else { return }
+        guard let url = URL(string: strURL) else {
+            completion([])
+            return
+        }
+        
         let session = URLSession.shared
         let task = session.dataTask(with: url) { data, response, error in
             //response - статус или ошибка
@@ -48,7 +52,10 @@ class NewsRequestServices {
         let text = text.replacingOccurrences(of: " ", with: "+")
         strURL = "https://newsapi.org/v2/everything?q=\(text)&sortBy=popularity&apiKey=\(ApiKey)"
 
-        guard let url = URL(string: strURL) else { return }
+        guard let url = URL(string: strURL) else {
+            completion([])
+            return
+        }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
