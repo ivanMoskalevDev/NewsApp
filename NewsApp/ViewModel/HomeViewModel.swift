@@ -17,38 +17,43 @@ class HomeViewModel {
         }
     }
     
-    var news: [Article] =  [] {
+    var newsCellModel: [NewsCellModel] =  [] {
         didSet {
-            //print(news)
-            self.bindNewsModel?(news)
+            self.bindNewsModel?(newsCellModel)
         }
     }
     
-    var bindNewsModel: ( ([Article]) -> () )?
+    var bindNewsModel:   ( ([NewsCellModel]) -> () )?
     var bindLoadingNews: ( (Bool) -> () )?
 
-//    init() {
-//        let testArticles: Article = .init(source: .init(id: "", name: ""),
-//                                          author: "RBK vesti",
-//                                          title: "text text texttetexttexttext",
-//                                          description: "",
-//                                          url: nil, urlToImage: nil, publishedAt: "28.07.2023T23:00",
-//                                          content: nil)
-//        news.append(testArticles)
-//    }
+    init() {
+        let testArticles: Article = .init(source: .init(id: "", name: ""),
+                                          author: "RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti",
+                                          title: "text text texttetexttexttext",
+                                          description: "",
+                                          url: nil, urlToImage: nil, publishedAt: "28.07.2023T23:00",
+                                          content: nil)
+        self.newsCellModel.append(.init(newsModel: testArticles, isFavorite: false))
+    }
     
     func getNews(category: TagCategory) {
+        self.newsCellModel.removeAll()
         loading = true
         service.getNews(category: category) { model in
-            self.news = model
+            for i in 0..<model.count {
+                self.newsCellModel.append(.init(newsModel: model[i], isFavorite: false))
+            }
             self.loading = false
         }
     }
     
     func getSearchNews(with text: String) {
+        self.newsCellModel.removeAll()
         loading = true
         service.getSearchNews(with: text) { model in
-            self.news = model
+            for i in 0..<model.count {
+                self.newsCellModel.append(.init(newsModel: model[i], isFavorite: false))
+            }
             self.loading = false
         }
     }

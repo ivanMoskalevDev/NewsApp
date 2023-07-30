@@ -11,7 +11,7 @@ import SnapKit
 class HomeViewController: UIViewController {
 
     private weak var coordinator:  CoordinatorApp?
-    private var      viewModel:    HomeViewModel
+    var              viewModel:    HomeViewModel
     
     private let carouselView = CarouselView()
     
@@ -170,14 +170,14 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.news.count
+        return viewModel.newsCellModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsCell
         else { return UITableViewCell() }
         cell.delegate = self
-        cell.updateCell(with: viewModel.news[indexPath.row])
+        cell.updateCell(with: viewModel.newsCellModel[indexPath.row], id: indexPath.row)
         return cell
     }
     
@@ -220,7 +220,7 @@ extension HomeViewController: NewsCellDelegateProtocol {
         showInternetAlert(with: model?.url)
     }
     
-    func didTapFavorite() {
+    func didTapFavorite(isChecked: Bool) {
         let alert = UIAlertController(title: "Sorry",
                                       message: "Saving to favorites doesn't work yet",
                                       preferredStyle: .alert)

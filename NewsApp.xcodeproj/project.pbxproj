@@ -24,6 +24,7 @@
 		045C433E2A759E7100CD2B1C /* SetupSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C433D2A759E7100CD2B1C /* SetupSearchTextField.swift */; };
 		045C43402A75B77900CD2B1C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C433F2A75B77900CD2B1C /* UserRepository.swift */; };
 		045C43422A75B83300CD2B1C /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C43412A75B83300CD2B1C /* AppManager.swift */; };
+		045C43442A76BA0500CD2B1C /* NewsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045C43432A76BA0500CD2B1C /* NewsCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		045C433D2A759E7100CD2B1C /* SetupSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSearchTextField.swift; sourceTree = "<group>"; };
 		045C433F2A75B77900CD2B1C /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		045C43412A75B83300CD2B1C /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		045C43432A76BA0500CD2B1C /* NewsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				045C43342A70696C00CD2B1C /* NewsModel.swift */,
 				045C433B2A744E6E00CD2B1C /* AppInfoModel.swift */,
+				045C43432A76BA0500CD2B1C /* NewsCellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				045C43372A71975600CD2B1C /* CarouselView.swift in Sources */,
 				045C433E2A759E7100CD2B1C /* SetupSearchTextField.swift in Sources */,
 				045C43422A75B83300CD2B1C /* AppManager.swift in Sources */,
+				045C43442A76BA0500CD2B1C /* NewsCellModel.swift in Sources */,
 				045C432B2A704BA500CD2B1C /* HomeViewModel.swift in Sources */,
 				045C432E2A704DA400CD2B1C /* NewsCell.swift in Sources */,
 				045C433A2A74444500CD2B1C /* RadioButton.swift in Sources */,

@@ -9,19 +9,21 @@ import UIKit
 import SnapKit
 
 protocol NewsCellDelegateProtocol: AnyObject {
+    var  viewModel: HomeViewModel { get set }
     func didTapCell(model: Article?)
-    func didTapFavorite()
+    func didTapFavorite(isChecked: Bool)
 }
 
 extension NewsCellDelegateProtocol {
     func didTapCell(model: Article?){}
-    func didTapFavorite() {}
+    func didTapFavorite(isChecked: Bool) {}
 }
 
 class NewsCell: UITableViewCell {
     
     weak var delegate: NewsCellDelegateProtocol?
-    private var model: Article?
+    private var idCell: Int?
+    //private var model: NewsCellModel?
     
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -31,14 +33,18 @@ class NewsCell: UITableViewCell {
         stack.backgroundColor = .white
         stack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         stack.isLayoutMarginsRelativeArrangement = true
+        stack.contentMode = .scaleAspectFill
         return stack
     }()
     
     private let stackTop: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
+        stack.spacing = 10
         stack.distribution = .equalSpacing
+        stack.alignment = .center
         stack.backgroundColor = .none
+        stack.contentMode = .scaleAspectFit
         return stack
     }()
     
@@ -46,6 +52,7 @@ class NewsCell: UITableViewCell {
         let title = UILabel()
         title.textAlignment = .left
         title.numberOfLines = 4
+        title.contentMode = .scaleAspectFill
         return title
     }()
     
@@ -70,6 +77,8 @@ class NewsCell: UITableViewCell {
         author.textAlignment = .left
         author.textColor = .gray
         author.font = UIFont(name: author.font.familyName, size: 18)
+        author.numberOfLines = 5
+        author.contentMode = .scaleAspectFill
         return author
     }()
     
@@ -106,6 +115,11 @@ class NewsCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    override func prepareForReuse() {
+//        //вызывается когда коллекция готовит ячейку к переиспользованию
+//        super.prepareForReuse()
+//    }
+    
     private func setupConstraints() {
         
         stackTop.addArrangedSubview(authorLabel)
@@ -122,19 +136,23 @@ class NewsCell: UITableViewCell {
         }
     }
     
-    func updateCell(with model: Article) {
-        self.model = model
-        authorLabel.text = model.author
-        titleLabel.text = model.title
-        dateLabel.text = model.publishedAt?.replacingOccurrences(of: "T", with: " ")
-                                            .replacingOccurrences(of: "Z", with: " ")
+    func updateCell(with model: NewsCellModel, id: Int) {
+        idCell = id
+        buttonFavorite.isChecked = model.isFavorite
+        authorLabel.text = model.newsModel.author
+        titleLabel.text = model.newsModel.title
+        dateLabel.text = model.newsModel.publishedAt?.replacingOccurrences(of: "T", with: " ")
+                                                        .replacingOccurrences(of: "Z", with: " ")
     }
     
     @objc private func tabHandler() {
-        delegate?.didTapCell(model: self.model)
+        guard let id = idCell else {return}
+        delegate?.didTapCell(model: self.delegate?.viewModel.newsCellModel[id].newsModel)
     }
     
     @objc private func tabFavorite() {
-        delegate?.didTapFavorite()
+        guard let id = idCell else {return}
+        self.delegate?.viewModel.newsCellModel[id].isFavorite = buttonFavorite.isChecked
+        delegate?.didTapFavorite(isChecked: buttonFavorite.isChecked)
     }
 }
