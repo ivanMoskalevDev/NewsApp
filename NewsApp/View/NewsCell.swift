@@ -44,7 +44,6 @@ class NewsCell: UITableViewCell {
         stack.distribution = .equalSpacing
         stack.alignment = .center
         stack.backgroundColor = .none
-        stack.contentMode = .scaleAspectFit
         return stack
     }()
     
@@ -52,7 +51,6 @@ class NewsCell: UITableViewCell {
         let title = UILabel()
         title.textAlignment = .left
         title.numberOfLines = 4
-        title.contentMode = .scaleAspectFit
         title.textColor = UIColor(named: "CardTextColor")
         return title
     }()
@@ -78,10 +76,7 @@ class NewsCell: UITableViewCell {
         author.textAlignment = .left
         author.textColor = .gray
         author.font = UIFont(name: author.font.familyName, size: 18)
-        author.numberOfLines = 5
-        //author.contentMode = .scaleAspectFit
-        //author.clipsToBounds = true
-        //author.layer.masksToBounds = false
+        author.numberOfLines = 0
         author.textColor = UIColor(named: "CardTopTextColor")
         return author
     }()
@@ -91,8 +86,6 @@ class NewsCell: UITableViewCell {
                               uncheckedImage: UIImage(systemName: "star") ?? UIImage(),
                               checkedImage: UIImage(systemName: "star.fill") ?? UIImage())
         btn.tintColor = .systemYellow
-        //btn.clipsToBounds = true
-        //btn.layer.masksToBounds = false
         return btn
     }()
     
@@ -107,6 +100,7 @@ class NewsCell: UITableViewCell {
         contentView.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 150)
         contentView.layer.shadowRadius = 4
         contentView.layer.shadowOpacity = 0.1
+        
         //обработка нажатия на ячейку
         let tap = UITapGestureRecognizer(target: self, action: #selector(tabHandler))
         contentView.addGestureRecognizer(tap)
@@ -136,6 +130,10 @@ class NewsCell: UITableViewCell {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(dateLabel)
         contentView.addSubview(stackView)
+        
+        buttonFavorite.snp.makeConstraints { make in
+            make.width.equalTo(25) //чтобы не сжималась кнопка
+        }
         
         stackView.snp.makeConstraints { make in
             make.top.bottom.left.right.equalToSuperview().inset(12)

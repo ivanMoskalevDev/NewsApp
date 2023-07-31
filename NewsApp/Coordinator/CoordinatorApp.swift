@@ -27,5 +27,4 @@ class CoordinatorApp: CoordinatorAppProtocol {
         navigationController.pushViewController(hvc, animated: true)
     }
     
-    
 }

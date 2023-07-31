@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     
     private let searchBar: UISearchBar = {
         let search = UISearchBar()
+        search.searchBarStyle = .minimal
         search.placeholder = "Find news..."
         return search
     }()
@@ -47,7 +48,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "PrimaryColor")
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         
         carouselView.corouselDelegate = self
         searchBar.delegate = self
@@ -103,7 +104,7 @@ class HomeViewController: UIViewController {
         buttonFav.imageView?.contentMode = .scaleAspectFit
         buttonFav.contentVerticalAlignment = .fill
         buttonFav.contentHorizontalAlignment = .fill
-        buttonFav.isUserInteractionEnabled = false // TODO
+        //buttonFav.isUserInteractionEnabled = false // TODO
         //buttonFav.addTarget(self, action: #selector(self.showWinsAlert), for: .touchUpInside)
         
         let navBarButMoon = UIBarButtonItem(customView: buttonMoon)

@@ -20,7 +20,7 @@ class CarouselView: UIScrollView {
     private let stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal //задаем положение
-        stack.backgroundColor = .none
+        stack.backgroundColor = .clear
         stack.spacing = 8
         stack.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         stack.isLayoutMarginsRelativeArrangement = true
@@ -30,7 +30,7 @@ class CarouselView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor(named: "BackgroundColor")
+        backgroundColor = UIColor(named: "CorouselBackColor")
         showsHorizontalScrollIndicator = false
 
         categoryButtons.append(CarouselButton(title: "Top", id: TagCategory.all.rawValue))
@@ -46,7 +46,7 @@ class CarouselView: UIScrollView {
         }
         
         addSubview(stackView)
-        
+
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.right.equalToSuperview()

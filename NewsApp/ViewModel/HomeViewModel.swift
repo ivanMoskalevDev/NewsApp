@@ -28,7 +28,7 @@ class HomeViewModel {
 
 //    init() {
 //        let testArticles: Article = .init(source: .init(id: "", name: ""),
-//                                          author: "RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti RBK vesti",
+//                                          author: "Sport24.ru - новости спорта онлайн в России и мире",
 //                                          title: "text text texttetexttexttext",
 //                                          description: "",
 //                                          url: nil, urlToImage: nil, publishedAt: "28.07.2023T23:00",
