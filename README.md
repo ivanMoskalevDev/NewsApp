@@ -1,6 +1,6 @@
 # NewsApp
 
-![grab-landing-page](https://github.com/ivanMoskalevDev/NewsApp/tree/main/NewsApp/Resources/preview.gif)
+![Alt Text](https://github.com/ivanMoskalevDev/NewsApp/blob/main/NewsApp/Resources/preview.gif)
 
 RU: 
 
