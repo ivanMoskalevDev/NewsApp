@@ -9,7 +9,7 @@ import Foundation
 
 class NewsRequestServices {
     
-    private let ApiKey = "YOUR_API_KEY"
+    private let ApiKey = "eb68bf7b53034f73b43599e1d339bd46"
     private var strURL = "url"
     
     func getNews(category: TagCategory, completion: @escaping ([Article]) -> Void) {
