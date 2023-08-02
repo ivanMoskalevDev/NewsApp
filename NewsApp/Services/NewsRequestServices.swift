@@ -9,7 +9,7 @@ import Foundation
 
 class NewsRequestServices {
     
-    private let ApiKey = "eb68bf7b53034f73b43599e1d339bd46"
+    private let ApiKey = "YOUR_API_KEY"
     private var strURL = "url"
     
     func getNews(category: TagCategory, completion: @escaping ([Article]) -> Void) {
@@ -41,6 +41,7 @@ class NewsRequestServices {
                 } catch {
                     //print(error)
                     print("Failed connect to \(error.localizedDescription)")
+                    completion([])
                 }
             }
         }
@@ -67,6 +68,7 @@ class NewsRequestServices {
                     completion(result.articles)
                 } catch {
                     print("Failed connect to \(error.localizedDescription)")
+                    completion([])
                 }
             }
         }.resume()
