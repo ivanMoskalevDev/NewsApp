@@ -1,5 +1,7 @@
 # NewsApp
 
+![grab-landing-page](https://github.com/ivanMoskalevDev/NewsApp/tree/main/NewsApp/Resources/preview.gif)
+
 RU: 
 
 Пожалуйста по возможности используйте свой API ключ, так как количество запросов ограничено. 
